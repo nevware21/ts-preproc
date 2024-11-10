@@ -1,0 +1,65 @@
+{
+    "name": "@nevware21/publish-npm",
+    "description": "Tools to automate the publishing packages to npm.",
+    "version": "0.1.0",
+    "homepage": "https://github.com/nevware21/ts-build-tools",
+    "license": "MIT",
+    "author": {
+        "name": "NevWare21 Solutions LLC",
+        "email": "github+ts_build_tools@nevware21.com"
+    },
+    "keywords": [
+        "typescript",
+        "javascript",
+        "build-tools",
+        "utilities",
+        "tools",
+        "npm",
+        "publishing",
+        "publish",     
+        "npm publish"
+    ],
+    "bin": {
+        "publish-npm": "./dist/bin/publish-npm.js"
+    },
+    "scripts": {
+        "build": "grunt publish-npm --verbose && npm run package",
+        "rebuild": "npm run build && npm run test && npm run docs",
+        "package": "rollup -c rollup.config.js --bundleConfigAsCjs",
+        "test": "grunt publish-npm-test && npm run test:node && npm run coverage:report",
+        "test:node": "nyc ts-mocha --type-check -p ./test/tsconfig.test.json ./test/**/*.test.ts --trace-uncaught",
+        "lint": "grunt publish-npm-lint",
+        "codecov": "",
+        "coverage:report": "npm run coverage:nyc",
+        "coverage:nyc": "nyc report --reporter=json",
+        "clean": "git clean -xdf && npm install",
+        "cleanBuild": "npm run clean && npm run rebuild",
+        "docs": "npx typedoc",
+        "rush-update": "rush update --recheck --purge --full",
+        "npm-pack": "copyfiles ../../LICENSE . && npm pack"
+    },
+    "repository": "nevware21/ts-build-tools",
+    "devDependencies": {
+        "@microsoft/api-extractor": "^7.34.4",
+        "@nevware21/tripwire": "^0.1.1",
+        "@rollup/plugin-commonjs": "^25.0.0",
+        "@rollup/plugin-json": "^6.0.0",
+        "@rollup/plugin-node-resolve": "^15.0.1",
+        "@rollup/plugin-strip": "^3.0.2",
+        "@rollup/plugin-typescript": "^11.0.0",
+        "@types/mocha": "^10.0.1",
+        "codecov": "^3.8.3",
+        "cross-env": "^7.0.3",
+        "grunt": "^1.5.3",
+        "grunt-cli": "^1.4.3",
+        "rollup": "^3.8.1",
+        "rollup-plugin-minify-es": "^1.1.1",
+        "rollup-plugin-istanbul": "^4.0.0",
+        "rollup-plugin-cleanup": "^3.2.1",
+        "ts-mocha": "^10.0.0",
+        "typedoc": "^0.26.2",
+        "typescript": "^4.9.5",
+        "uglify-js": "^3.15.5",
+        "copyfiles": "^2.4.1"
+    }
+}

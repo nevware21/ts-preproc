@@ -1,0 +1,95 @@
+{
+    "name": "@nevware21/ts-preproc",
+    "description": "TypeScript pre-processing tools.",
+    "version": "0.1.0",
+    "homepage": "https://github.com/nevware21/ts-build-tools",
+    "license": "MIT",
+    "author": {
+        "name": "Nevware21 Solutions LLC",
+        "email": "github+ts_build_tools@nevware21.com"
+    },
+    "keywords": [
+        "typescript",
+        "javascript",
+        "build-tools",
+        "utilities",
+        "tools",
+        "pre-processing",
+        "post-processing",
+        "pre-proc",
+        "if",
+        "ifdef",
+        "ifndef",
+        "else",
+        "elif",
+        "endif",
+        "define",
+        "undef"
+    ],
+    "bin": {
+        "ts-preproc": "./dist/bin/ts-preproc.js",
+        "ts-preproc-restore": "./dist/bin/ts-preproc-restore.js"
+    },
+    "main": "dist/es5/main/preproc.js",
+    "esnext:main": "dist/es6/main/preproc.js",
+    "module": "dist/es5/mod/preproc.js",
+    "esnext:module": "dist/es6/mod/preproc.js",
+    "types": "dist/types/preproc.d.ts",
+    "scripts": {
+        "build": "grunt pre-proc --verbose && npm run package && npm run dtsgen",
+        "rebuild": "npm run build && npm run test && npm run docs",
+        "package": "rollup -c rollup.config.js --bundleConfigAsCjs",
+        "test": "grunt pre-proc-test && npm run test:node && npm run coverage:report",
+        "test:node": "nyc ts-mocha --type-check -p ./test/tsconfig.test.json ./test/**/*.test.ts --trace-uncaught",
+        "lint": "grunt pre-proc-lint",
+        "codecov": "npm run coverage:report",
+        "coverage:report": "npm run coverage:nyc && npm run coverage:merge",
+        "coverage:nyc": "nyc report --reporter=json",
+        "coverage:merge": "node ../coverage-tools/dist/bin/merge-coverage.js",
+        "clean": "git clean -xdf && npm install",
+        "cleanBuild": "npm run clean && npm run rebuild",
+        "docs": "npx typedoc",
+        "rush-update": "rush update --recheck --purge --full",
+        "dtsgen": "api-extractor run --local --verbose",
+        "npm-pack": "copyfiles ../../LICENSE . && npm pack"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nevware21/ts-build-tools.git"
+    },
+    "bugs": {
+        "url": "https://github.com/nevware21/ts-build-tools/issues"
+    },
+    "engines": {
+        "node": ">= 0.8.0"
+    },
+    "dependencies": {
+        "@nevware21/ts-utils": ">= 0.11.5 < 2.x",
+        "globby": "^11.0.0"
+    },
+    "devDependencies": {
+        "@microsoft/api-extractor": "^7.34.4",
+        "@nevware21/tripwire": "^0.1.1",
+        "@nevware21/coverage-tools": "0.1.0",
+        "@rollup/plugin-commonjs": "^25.0.0",
+        "@rollup/plugin-json": "^6.0.0",
+        "@rollup/plugin-node-resolve": "^15.0.1",
+        "@rollup/plugin-strip": "^3.0.2",
+        "@rollup/plugin-typescript": "^11.0.0",
+        "@nevware21/publish-npm": "0.1.0",
+        "@types/mocha": "^10.0.1",
+        "codecov": "^3.8.3",
+        "cross-env": "^7.0.3",
+        "grunt": "^1.5.3",
+        "grunt-cli": "^1.4.3",
+        "rollup": "^3.8.1",
+        "rollup-plugin-minify-es": "^1.1.1",
+        "rollup-plugin-istanbul": "^4.0.0",
+        "rollup-plugin-cleanup": "^3.2.1",
+        "ts-mocha": "^10.0.0",
+        "typedoc": "^0.26.2",
+        "typescript": "^4.9.5",
+        "uglify-js": "^3.15.5",
+        "copyfiles": "^2.4.1"
+    }
+}

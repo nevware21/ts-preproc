@@ -1,0 +1,56 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
+    "commands": [
+        {
+            "commandKind": "bulk",
+            "name": "test",
+            "summary": "Run all tests for all packages",
+            "description": "Runs tests for all projects",
+            "safeForSimultaneousRushProcesses": false,
+            "enableParallelism": false,
+            "ignoreMissingScript": false,
+            "allowWarningsInSuccessfulBuild": true
+        },
+        {
+            "commandKind": "bulk",
+            "name": "lint",
+            "summary": "Run all tslint for all packages",
+            "description": "Runs tslint for all projects",
+            "safeForSimultaneousRushProcesses": false,
+            "enableParallelism": true,
+            "ignoreMissingScript": false
+        },
+        {
+            "commandKind": "bulk",
+            "summary": "Run all build for all packages",
+            "name": "build",
+            "allowWarningsInSuccessfulBuild": true
+        },
+        {
+            "commandKind": "bulk",
+            "summary": "Run all build for all packages",
+            "name": "rebuild",
+            "allowWarningsInSuccessfulBuild": true
+        },
+        {
+            "commandKind": "bulk",
+            "summary": "Run all npm-pack targets for all packages",
+            "name": "npm-pack",
+            "description": "Runs npm-pack for all projects",
+            "safeForSimultaneousRushProcesses": false,
+            "enableParallelism": false,
+            "ignoreMissingScript": false,
+            "allowWarningsInSuccessfulBuild": true
+        },
+        {
+            "commandKind": "bulk",
+            "summary": "Run all codecov targets for all packages",
+            "name": "codecov",
+            "description": "Runs codecov for all projects",
+            "safeForSimultaneousRushProcesses": false,
+            "enableParallelism": false,
+            "ignoreMissingScript": false,
+            "allowWarningsInSuccessfulBuild": true
+        }
+    ]
+}

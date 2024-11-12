@@ -119,4 +119,4 @@ publish-npm/LICENSE
 coverage-tools/LICENSE
 
 #ignore typedoc docs
-docs/typedoc/**
+docs/**/typedoc/**

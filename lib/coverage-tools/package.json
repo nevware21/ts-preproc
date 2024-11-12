@@ -1,0 +1,74 @@
+{
+    "name": "@nevware21/coverage-tools",
+    "description": "Tools for merging coverage reports.",
+    "version": "0.1.0",
+    "homepage": "https://github.com/nevware21/ts-build-tools",
+    "license": "MIT",
+    "author": {
+        "name": "NevWare21 Solutions LLC",
+        "email": "github+ts-build-tools@nevware21.com"
+    },
+    "keywords": [
+        "typescript",
+        "javascript",
+        "build-tools",
+        "utilities",
+        "tools",
+        "coverage"        
+    ],
+    "bin": {
+        "merge-coverage": "./dist/bin/merge-coverage.js"
+    },
+    "scripts": {
+        "build": "grunt coverage-tools --verbose && npm run package",
+        "rebuild": "npm run build && npm run test && npm run docs",
+        "package": "rollup -c rollup.config.js --bundleConfigAsCjs",
+        "test": "grunt publish-npm-test && npm run test:node && npm run coverage:report",
+        "test:node": "nyc ts-mocha --type-check -p ./test/tsconfig.test.json ./test/**/*.test.ts --trace-uncaught",
+        "lint": "grunt coverage-tools-lint",
+        "codecov": "npm run coverage:report",
+        "coverage:report": "npm run coverage:nyc && npm run coverage:merge",
+        "coverage:nyc": "nyc report --reporter=json",
+        "coverage:merge": "node ./dist/bin/merge-coverage.js",
+        "clean": "git clean -xdf && npm install",
+        "cleanBuild": "npm run clean && npm run rebuild",
+        "docs": "npx typedoc",
+        "rush-update": "rush update --recheck --purge --full",
+        "npm-pack": "copyfiles ../../LICENSE . && npm pack"
+    },
+    "repository": "nevware21/ts-build-tools",
+    "dependencies": {
+        "glob": "^7.1.7",
+        "istanbul-lib-coverage": "^3.0.0",
+        "istanbul-lib-report": "^3.0.0",
+        "istanbul-reports": "^3.0.2"
+    },
+    "devDependencies": {
+        "@microsoft/api-extractor": "^7.34.4",
+        "@nevware21/tripwire": "^0.1.1",
+        "@rollup/plugin-commonjs": "^25.0.0",
+        "@rollup/plugin-json": "^6.0.0",
+        "@rollup/plugin-node-resolve": "^15.0.1",
+        "@rollup/plugin-strip": "^3.0.2",
+        "@rollup/plugin-typescript": "^11.0.0",
+        "@nevware21/publish-npm": "0.1.0",
+        "@types/glob": "^7.1.3",
+        "@types/istanbul-lib-coverage": "^2.0.0",
+        "@types/istanbul-lib-report": "^3.0.0",
+        "@types/istanbul-reports": "^3.0.2",
+        "@types/mocha": "^10.0.1",
+        "codecov": "^3.8.3",
+        "cross-env": "^7.0.3",
+        "grunt": "^1.5.3",
+        "grunt-cli": "^1.4.3",
+        "rollup": "^3.8.1",
+        "rollup-plugin-minify-es": "^1.1.1",
+        "rollup-plugin-istanbul": "^4.0.0",
+        "rollup-plugin-cleanup": "^3.2.1",
+        "ts-mocha": "^10.0.0",
+        "typedoc": "^0.26.2",
+        "typescript": "^4.9.5",
+        "uglify-js": "^3.15.5",
+        "copyfiles": "^2.4.1"
+    }
+}

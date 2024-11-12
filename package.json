@@ -1,0 +1,82 @@
+{
+    "name": "@nevware21/ts-build-tools",
+    "description": "A mono-repo for @nevware21 build-tools.",
+    "version": "0.5.3",
+    "homepage": "https://github.com/nevware21/ts-build-tools",
+    "sideEffects": false,
+    "license": "MIT",
+    "author": {
+        "name": "NevWare21 Solutions LLC",
+        "email": "github+ts_build_tools@nevware21.com"
+    },
+    "keywords": [
+        "typescript",
+        "javascript",
+        "build-tools",
+        "utilities",
+        "tools",
+        "pre-processing",
+        "post-processing",
+        "typedef",
+        "npm-publish",
+        "npm",
+        "publish-npm",
+        "publishing",
+        "coverage"
+    ],
+    "scripts": {
+        "postinstall": "node common/scripts/install-run-rush.js update --full",
+        "build": "rush build",
+        "rebuild": "rush rebuild",
+        "test": "rush test",
+        "lint": "grunt all-lint",
+        "codecov": "rush codecov",
+        "clean": "git clean -xdf && npm install",
+        "cleanBuild": "npm run clean && npm run rebuild",
+        "rush-update": "rush update --recheck --purge --full",
+        "test:node": "cd lib && npm run test:node",
+        "prep-release": "npm run cleanBuild && npm run npm-pack",
+        "npm-pack": "rush npm-pack"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nevware21/ts-build-tools.git"
+    },
+    "bugs": {
+        "url": "https://github.com/nevware21/ts-build-tools/issues"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/nevware21/ts-build-tools/blob/main/LICENSE"
+        }
+    ],
+    "engines": {
+        "node": ">= 0.8.0"
+    },
+    "dependencies": {
+        "@nevware21/ts-utils": ">= 0.11.5 < 2.x"
+    },
+    "devDependencies": {
+        "@istanbuljs/nyc-config-typescript": "^1.0.2",
+        "@microsoft/rush": "5.140.1",
+        "@nevware21/grunt-eslint-ts": "^0.5.1",
+        "@nevware21/grunt-ts-plugin": "^0.5.1",
+        "@nevware21/tripwire": "^0.1.1",
+        "@types/eslint": "^8.56.10",
+        "@types/estree": "^1.0.0",
+        "@types/jquery": "^3.5.14",
+        "@types/mocha": "^10.0.1",
+        "@types/sinon": "^10.0.11",
+        "@typescript-eslint/eslint-plugin": "^7.14.1",
+        "@typescript-eslint/parser": "^7.14.1",
+        "eslint": "^8.56.0",
+        "eslint-formatter-codeframe": "^7.32.1",
+        "eslint-plugin-security": "^1.7.1",
+        "grunt": "^1.6.1",
+        "grunt-cli": "^1.5.0",
+        "nyc": "^17.0.0",
+        "typedoc": "^0.26.2",
+        "typescript": "^4.9.5"
+    }
+}

@@ -71,7 +71,7 @@
         "@microsoft/api-extractor": "^7.34.4",
         "@nevware21/tripwire": "^0.1.1",
         "@nevware21/coverage-tools": "0.1.0",
-        "@rollup/plugin-commonjs": "^25.0.0",
+        "@rollup/plugin-commonjs": "^28.0.1",
         "@rollup/plugin-json": "^6.0.0",
         "@rollup/plugin-node-resolve": "^15.0.1",
         "@rollup/plugin-strip": "^3.0.2",

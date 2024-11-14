@@ -8,7 +8,7 @@
 
 import * as fs from "fs";
 import * as path from "path";
-import * as globby from "globby";
+import { globbySync } from "globby";
 import { arrForEach } from "@nevware21/ts-utils";
 import { undefSrc } from "./undef";
 import { LineEnding, getLines } from "./getLines";
@@ -16,7 +16,7 @@ import { convertFile } from "./convertFile";
 import { IPreProcArgs } from "./interfaces/IPreArgs";
 
 export function processGroup(theArgs: IPreProcArgs, sourceRoot: string) {
-    const files = globby.sync(path.join(sourceRoot, "./**/*.ts").replace(/\\/g, "/"));
+    const files = globbySync(path.join(sourceRoot, "./**/*.ts").replace(/\\/g, "/"));
     files.map((inputFile) => {
         console.debug("   - " + inputFile);
         let orgSrc = fs.readFileSync(inputFile, { encoding: "utf8" });

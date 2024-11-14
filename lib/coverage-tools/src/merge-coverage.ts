@@ -7,16 +7,14 @@
  */
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const fs = require("fs");
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const glob = require("glob");
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const istanbulCoverage = require("istanbul-lib-coverage");
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const istanbulReport = require("istanbul-lib-report");
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const istanbulReportGenerator = require("istanbul-reports");
 
+import * as fs from "fs";
+import { globbySync } from "globby";
 import { IMergeCoverageArgs } from "./interfaces/IMergeCoverageArgs";
 import { getJson } from "./utils";
 
@@ -37,7 +35,7 @@ export function mergeCoverage(cfg: IMergeCoverageArgs) {
 
     console.log(`Merging coverage files in ${rootPath} - [${fs.realpathSync(rootPath)}]`);
     // Find any files named "coverage-final.json" (excluding any existing merged one)
-    let jsonFiles = glob.sync(`${rootPath}/**/coverage-final.json`)
+    let jsonFiles = globbySync(`${rootPath}/**/coverage-final.json`)
         .filter((possibleFile: any) => (possibleFile.indexOf("report") === -1 && possibleFile.indexOf("coverage/coverage-final.json") === -1));
 
     console.log(`Found ${jsonFiles.length} coverage files to merge:`);

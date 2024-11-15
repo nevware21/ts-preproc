@@ -36,7 +36,8 @@
         "rush-update": "rush update --recheck --purge --full",
         "test:node": "cd lib && npm run test:node",
         "prep-release": "npm run cleanBuild && npm run npm-pack",
-        "npm-pack": "rush npm-pack"
+        "npm-pack": "rush npm-pack",
+        "npm-publish": "node ./lib/publish-npm/dist/bin/publish-npm.js -c ./publish-npm.json"
     },
     "repository": {
         "type": "git",

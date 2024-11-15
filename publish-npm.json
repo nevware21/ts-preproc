@@ -1,0 +1,21 @@
+// ------------------------------
+// NPM Publish group definitions
+// ------------------------------
+{
+    "repoRoot": ".",
+    "default": "ts-build-tools",
+    "groups": {
+        "ts-build-tools": [
+            "./lib/pre-proc"
+        ],
+        "preProc": [
+            "./lib/pre-proc"
+        ],
+        "mergeCoverage": [
+            "./lib/merge-coverage"
+        ],
+        "npmPublish": [
+            "./lib/publish-npm"
+        ]
+    }
+}

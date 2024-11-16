@@ -20,6 +20,6 @@ export function showHelp() {
     console.log("");
     console.log(scriptName + " <group> ");
     console.log("--------------------------");
-    console.log(" -C|-c <file> - Specifies the custom publish group definition file, defaults to ../publish-npm.json");
+    console.log(" -C|-c <file> - Specifies the custom publish group definition file, defaults to ../publish-groups.json");
     console.log(" <group>      - Identifies the group to publish, identifies folders");
 }

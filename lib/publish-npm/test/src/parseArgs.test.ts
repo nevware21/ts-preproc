@@ -32,7 +32,7 @@ describe("parseArgs", () => {
     it("should return null if no arguments are provided", () => {
         const result = parseArgs();
         expect(result).deep.equals({
-            publishGroupDef: "../publish-npm.json",
+            publishGroupDef: "../publish-groups.json",
             repoRoot: "",
             publishGroup: null,
             dryRun: ""
@@ -43,7 +43,7 @@ describe("parseArgs", () => {
         process.argv.push("-test");
         const result = parseArgs();
         expect(result).deep.equals({
-            publishGroupDef: "../publish-npm.json",
+            publishGroupDef: "../publish-groups.json",
             repoRoot: "",
             publishGroup: null,
             dryRun: "--dry-run"
@@ -54,7 +54,7 @@ describe("parseArgs", () => {
         process.argv.push("my-publish-group");
         const result = parseArgs();
         expect(result).deep.equals({
-            publishGroupDef: "../publish-npm.json",
+            publishGroupDef: "../publish-groups.json",
             repoRoot: "",
             publishGroup: "my-publish-group",
             dryRun: ""

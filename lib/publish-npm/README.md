@@ -32,9 +32,9 @@ Create a configuration file with your group settings, where the
 // ------------------------------
 {
     "repoRoot": "../../..",
-    "default": "ts-build-tools",
+    "default": "all",
     "groups": {
-        "ts-build-tools": [
+        "all": [
             "./lib/pre-proc",
             "./lib/merge-coverage",
             "./lib/publish-npm"

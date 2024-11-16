@@ -37,7 +37,7 @@
         "test:node": "cd lib && npm run test:node",
         "prep-release": "npm run cleanBuild && npm run npm-pack",
         "npm-pack": "rush npm-pack",
-        "npm-publish": "node ./lib/publish-npm/dist/bin/publish-npm.js -c ./publish-npm.json"
+        "npm-publish": "node ./lib/publish-npm/dist/bin/publish-npm.js -c ./publish-groups.json"
     },
     "repository": {
         "type": "git",

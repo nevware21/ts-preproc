@@ -5,7 +5,7 @@
     "repoRoot": ".",
     "default": "all",
     "groups": {
-        "ts-build-tools": [
+        "all": [
             "./lib/pre-proc",
             "./lib/merge-coverage",
             "./lib/publish-npm"

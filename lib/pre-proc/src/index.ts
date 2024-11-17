@@ -3,6 +3,7 @@ import { processGroup } from "./processGroup";
 import { showHelp } from "./showHelp";
 import { parseArgs } from "./parseArgs";
 import { getGroupDefinitions } from "./groupDefinitions";
+import { findRepoRoot } from "./utils";
 
 
 export function preProcess(cwd: string, cmdArgs: string[]) {
@@ -10,6 +11,13 @@ export function preProcess(cwd: string, cmdArgs: string[]) {
     let theArgs = parseArgs(cwd, cmdArgs);
     if (theArgs) {
         let groupDef = getGroupDefinitions(theArgs);
+
+        if (!theArgs.repoRoot) {
+            theArgs.repoRoot = findRepoRoot("");
+        }
+        
+        console.log(`RepoRoot: ${theArgs.repoRoot}`);
+
 
         console.log(`Process [${theArgs.sourceGroup}] packages => ${groupDef.length}`);
         console.log(` - Defined: ${JSON.stringify(theArgs.globalContext.defs, null, 4)}`);

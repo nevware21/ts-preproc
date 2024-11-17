@@ -7,7 +7,7 @@
  */
 
 import { expect } from "@nevware21/tripwire";
-import { removeComments, removeJsonTrailingComma } from "../../src/utils";
+import { findPublishGroupsFile, findRepoRoot, removeComments, removeJsonTrailingComma } from "../../src/utils";
 
 describe("utils", () => {
     it("should not trailing comma", () => {
@@ -65,4 +65,43 @@ describe("utils", () => {
     it ("should remove leading comments", () => {
         expect(removeComments("// test\n// test\nhello//inline\ndarkness")).equals("\nhello\ndarkness");
     });
+});
+
+describe("findRepoRoot", () => {
+    it("should find repo root", () => {
+        expect(findRepoRoot("")).equals("../..");
+        expect(findRepoRoot(".")).equals("../..");
+        expect(findRepoRoot("./")).equals("../..");
+        expect(findRepoRoot("../")).equals("../..");
+        expect(findRepoRoot("../..")).equals("../..");
+        expect(findRepoRoot("../../")).equals("../..");
+        expect(findRepoRoot("./../../")).equals("./../..");
+        expect(findRepoRoot("../../.")).equals("../../.");
+        expect(findRepoRoot("../../..")).equals(null);
+    });
+});
+
+describe("findPublishGroupsFile", () => {
+    it("should find publish groups file", () => {
+        console.log("cwd: " + process.cwd());
+        expect(findPublishGroupsFile("")).equals("../../publish-groups.json");
+        expect(findPublishGroupsFile(".")).equals("../../publish-groups.json");
+        expect(findPublishGroupsFile("./")).equals("../../publish-groups.json");
+        expect(findPublishGroupsFile("../")).equals("../../publish-groups.json");
+        expect(findPublishGroupsFile("../..")).equals("../../publish-groups.json");
+        expect(findPublishGroupsFile("../../")).equals("../../publish-groups.json");
+        expect(findPublishGroupsFile("./../../")).equals("./../../publish-groups.json");
+        expect(findPublishGroupsFile("../../.")).equals("../.././publish-groups.json");
+        expect(findPublishGroupsFile("../../..")).equals(null);
+    });
+
+    it("should find publish groups file", () => {
+        console.log("cwd: " + process.cwd());
+        expect(findPublishGroupsFile("", "publish-groups-example.json")).equals("./publish-groups-example.json");
+        expect(findPublishGroupsFile(".", "publish-groups-example.json")).equals("./publish-groups-example.json");
+        expect(findPublishGroupsFile("./", "publish-groups-example.json")).equals("./publish-groups-example.json");
+        expect(findPublishGroupsFile("../", "publish-groups-example.json")).equals(null);
+        expect(findPublishGroupsFile("../../..", "publish-groups-example.json")).equals(null);
+    });
+
 });

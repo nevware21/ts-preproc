@@ -9,9 +9,15 @@
 import * as fs from "fs";
 import * as path from "path";
 import { INpmPublishArgs } from "./interfaces/INpmPublishArgs";
-import { removeComments, removeJsonTrailingComma } from "./utils";
+import { findPublishGroupsFile, findRepoRoot, removeComments, removeJsonTrailingComma } from "./utils";
 
 export function getGroupProjects(theArgs: INpmPublishArgs): string[] {
+    let publishGroup = theArgs.publishGroupDef;
+    if (!publishGroup) {
+        publishGroup = findPublishGroupsFile("./");
+        console.log("Using Publish Group: " + publishGroup);
+    }
+
     if (!fs.existsSync(theArgs.publishGroupDef)) {
         console.error("!!! Unable to locate publish group definitions [" + path.join(process.cwd(), theArgs.publishGroupDef) + "]");
         throw new Error("!!! Unable to locate publish group definitions.");
@@ -20,6 +26,11 @@ export function getGroupProjects(theArgs: INpmPublishArgs): string[] {
     var groupText = removeComments(removeJsonTrailingComma(fs.readFileSync(theArgs.publishGroupDef, "utf-8")));
 
     let groupJson = JSON.parse(groupText);
+    let repoRoot = groupJson.repoRoot;
+    if (!repoRoot) {
+        repoRoot = findRepoRoot("./");
+    }
+
     theArgs.repoRoot = path.join(process.cwd(), (groupJson.repoRoot || "")).replace(/\\/g, "/");
     console.log("Repo: " + theArgs.repoRoot);
 

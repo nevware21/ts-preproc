@@ -8,11 +8,9 @@
 
 import { INpmPublishArgs } from "./interfaces/INpmPublishArgs";
 
-const DEFAULT_PUBLISH_GROUPS_DEF = "../publish-groups.json";
-
 export function parseArgs(): INpmPublishArgs {
     let theArgs: INpmPublishArgs = {
-        publishGroupDef: DEFAULT_PUBLISH_GROUPS_DEF,
+        publishGroupDef: null,
         repoRoot: "",
         publishGroup: null,
         dryRun: ""

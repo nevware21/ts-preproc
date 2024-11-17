@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { arrForEach, objForEachKey, strSplit, strTrim } from "@nevware21/ts-utils";
 import { IPreProcArgs } from "./interfaces/IPreArgs";
-import { removeComments, removeJsonTrailingComma } from "./utils";
+import { findRepoRoot, removeComments, removeJsonTrailingComma } from "./utils";
 import { IPreProcDefaults, IPreProcFile } from "./interfaces/IPreProc";
 
 export function getGroupDefinitions(preProcArgs: IPreProcArgs): string[] {
@@ -19,6 +19,13 @@ export function getGroupDefinitions(preProcArgs: IPreProcArgs): string[] {
         var groupText = removeComments(removeJsonTrailingComma(fs.readFileSync(preProcArgs.preProcDef, "utf-8")));
 
         groupJson = JSON.parse(groupText);
+        if (!groupJson.repoRoot) {
+            groupJson.repoRoot = findRepoRoot("");
+        }
+        if (!preProcArgs.cfgRepoRoot) {
+            preProcArgs.cfgRepoRoot = findRepoRoot("");
+        }
+
         preProcArgs.repoRoot = path.join(preProcArgs.cwd, (preProcArgs.cfgRepoRoot || groupJson.repoRoot || "")).replace(/\\/g, "/");
         console.log("Repo: " + preProcArgs.repoRoot);
 

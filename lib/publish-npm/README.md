@@ -36,14 +36,14 @@ Create a configuration file with your group settings, where the
     "groups": {
         "all": [
             "./lib/pre-proc",
-            "./lib/merge-coverage",
+            "./lib/coverage-tools",
             "./lib/publish-npm"
         ],
         "preProc": [
             "./lib/pre-proc"
         ],
         "mergeCoverage": [
-            "./lib/merge-coverage"
+            "./lib/coverage-tools"
         ],
         "npmPublish": [
             "./lib/publish-npm"

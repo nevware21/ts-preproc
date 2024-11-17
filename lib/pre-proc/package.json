@@ -26,6 +26,9 @@
         "define",
         "undef"
     ],
+    "engines": {
+        "node": ">=16"
+    },
     "bin": {
         "ts-preproc": "./dist/bin/ts-preproc.js",
         "ts-preproc-restore": "./dist/bin/ts-preproc-restore.js"
@@ -59,9 +62,6 @@
     },
     "bugs": {
         "url": "https://github.com/nevware21/ts-build-tools/issues"
-    },
-    "engines": {
-        "node": ">= 0.8.0"
     },
     "dependencies": {
         "@nevware21/ts-utils": ">= 0.11.5 < 2.x",

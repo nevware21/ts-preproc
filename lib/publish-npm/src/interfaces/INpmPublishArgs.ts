@@ -7,7 +7,7 @@
  */
 
 export interface INpmPublishArgs {
-    publishGroupDef: string;
+    publishGroupDef: string | null;
     repoRoot: string;
     publishGroup: string | null;
     dryRun: string;

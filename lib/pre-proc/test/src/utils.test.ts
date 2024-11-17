@@ -7,7 +7,7 @@
  */
 
 import { expect } from "@nevware21/tripwire";
-import { removeComments, removeJsonTrailingComma } from "../../src/utils";
+import { findRepoRoot, removeComments, removeJsonTrailingComma } from "../../src/utils";
 
 describe("utils", () => {
     it("should not trailing comma", () => {
@@ -66,3 +66,18 @@ describe("utils", () => {
         expect(removeComments("// test\n// test\nhello//inline\ndarkness")).equals("\nhello\ndarkness");
     });
 });
+
+describe("findRepoRoot", () => {
+    it("should find repo root", () => {
+        expect(findRepoRoot("")).equals("../..");
+        expect(findRepoRoot(".")).equals("../..");
+        expect(findRepoRoot("./")).equals("../..");
+        expect(findRepoRoot("../")).equals("../..");
+        expect(findRepoRoot("../..")).equals("../..");
+        expect(findRepoRoot("../../")).equals("../..");
+        expect(findRepoRoot("./../../")).equals("./../..");
+        expect(findRepoRoot("../../.")).equals("../../.");
+        expect(findRepoRoot("../../..")).equals(null);
+    });
+});
+

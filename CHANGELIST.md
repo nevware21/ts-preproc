@@ -1,3 +1,10 @@
+# v0.1.2 Nov 17th, 2024
+
+## Changelog
+
+- [#37](https://github.com/nevware21/ts-build-tools/issues/37) [Bug] Update the default location of the package-groups.json
+- Added support for auto locating the repo root when not specified
+
 # v0.1.1 Nov 16th, 2024
 
 ## Changelog

@@ -19,6 +19,9 @@
         "publish",     
         "npm publish"
     ],
+    "engines": {
+        "node": ">=16"
+    },
     "bin": {
         "publish-npm": "./dist/bin/publish-npm.js"
     },

@@ -16,6 +16,9 @@
         "tools",
         "coverage"        
     ],
+    "engines": {
+        "node": ">=16"
+    },
     "bin": {
         "merge-coverage": "./dist/bin/merge-coverage.js"
     },

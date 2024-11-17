@@ -2,9 +2,11 @@
 <h2 align="center">This repo is a mono-repo containing TypeScript build tools</h2>
 
 ![GitHub Workflow Status (main)](https://img.shields.io/github/actions/workflow/status/nevware21/ts-build-tools/ci.yml?branch=main)
-[![codecov](https://codecov.io/gh/nevware21/ts-build-tools/branch/main/graph/badge.svg?token=KA05820FMO)](https://codecov.io/gh/nevware21/ts-build-tools)
-[![npm version](https://badge.fury.io/js/%40nevware21%2Fts-build-tools.svg)](https://badge.fury.io/js/%40nevware21%2Fts-build-tools)
-[![downloads](https://img.shields.io/npm/dm/%40nevware21/ts-build-tools.svg)](https://www.npmjs.com/package/%40nevware21/ts-build-tools)
+![GitHub Issues](https://img.shields.io/github/issues/nevware21/ts-build-tools)
+![Pull Requests](https://img.shields.io/github/issues-pr/nevware21/ts-build-tools)
+![GitHub Release Date](https://img.shields.io/github/release-date/nevware21/ts-build-tools)
+<!-- [![codecov](https://codecov.io/gh/nevware21/ts-build-tools/graph/badge.svg?token=xDZAwPRKtX)](https://codecov.io/gh/nevware21/ts-build-tools) -->
+
 
 ## Description
 

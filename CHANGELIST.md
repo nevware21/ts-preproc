@@ -1,3 +1,10 @@
+# v0.1.1 Nov 16th, 2024
+
+## Changelog
+
+- [#34](https://github.com/nevware21/ts-build-tools/issues/34) [Bug] The bin files are not created correctly on install #34 [#35](https://github.com/nevware21/ts-build-tools/pull/35)
+
+
 # v0.1.0 Nov 16th, 2024
 
 ## ChangeLog

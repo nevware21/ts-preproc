@@ -1,8 +1,7 @@
 <h1 align="center">@nevware21/ts-preproc</h1>
 <h2 align="center">A simple pre-processor for TypeScript files using syntax simular to the C preprocessor</h2>
 
-![GitHub Workflow Status (main)](https://img.shields.io/github/actions/workflow/status/nevware21/ts-preproc/ci.yml?branch=main)
-[![codecov](https://codecov.io/gh/nevware21/ts-preproc/branch/main/graph/badge.svg?token=KA05820FMO)](https://codecov.io/gh/nevware21/ts-preproc)
+![GitHub Workflow Status (main)](https://img.shields.io/github/actions/workflow/status/nevware21/ts-build-tools/ci.yml?branch=main)
 [![npm version](https://badge.fury.io/js/%40nevware21%2Fts-preproc.svg)](https://badge.fury.io/js/%40nevware21%2Fts-preproc)
 [![downloads](https://img.shields.io/npm/dt/%40nevware21/ts-preproc.svg)](https://www.npmjs.com/package/%40nevware21/ts-preproc)
 [![downloads](https://img.shields.io/npm/dm/%40nevware21/ts-preproc.svg)](https://www.npmjs.com/package/%40nevware21/ts-preproc)

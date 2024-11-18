@@ -489,7 +489,7 @@
     "node_modules/@rush-temp/coverage-tools": {
       "version": "0.0.0",
       "resolved": "file:projects/coverage-tools.tgz",
-      "integrity": "sha512-Wo5hn67QdEK3tGy8rlGd43ZLqDxtL33kslmyUEQn1SXiVYaQSj5HiBVAiIDaJUXMJ4+qJK4YHFUSr96doqYadw==",
+      "integrity": "sha512-KHE4ELHzpoW7WJ/NZYmUqA6tGs+6YwF7D6rbE3TCQE5LBqV3nuDerp6FjLiZRH2XW6aSgIJT5eybdAGyo9WcBA==",
       "dependencies": {
         "@microsoft/api-extractor": "^7.34.4",
         "@nevware21/tripwire": "^0.1.1",
@@ -573,7 +573,7 @@
     "node_modules/@rush-temp/ts-preproc": {
       "version": "0.0.0",
       "resolved": "file:projects/ts-preproc.tgz",
-      "integrity": "sha512-qpilYVUdTWUUhVd1vxSIRFuGpPcEYOPeHrURnpCZvAhC/E4GfxIB6ulBhiR0KEonOXLoDdWu7y0Gw2Fz5QB0iA==",
+      "integrity": "sha512-Bcm0j3kxLQK1nuL6cR06a0cC3aW2zwtFQq3QuNwlemDw7R5OvBjiM7tSBMbSDInbZYir9XCKxpK9G49ayxOgQw==",
       "dependencies": {
         "@microsoft/api-extractor": "^7.34.4",
         "@nevware21/tripwire": "^0.1.1",
@@ -4436,7 +4436,7 @@
     },
     "@rush-temp/coverage-tools": {
       "version": "file:projects\\coverage-tools.tgz",
-      "integrity": "sha512-Wo5hn67QdEK3tGy8rlGd43ZLqDxtL33kslmyUEQn1SXiVYaQSj5HiBVAiIDaJUXMJ4+qJK4YHFUSr96doqYadw==",
+      "integrity": "sha512-KHE4ELHzpoW7WJ/NZYmUqA6tGs+6YwF7D6rbE3TCQE5LBqV3nuDerp6FjLiZRH2XW6aSgIJT5eybdAGyo9WcBA==",
       "requires": {
         "@microsoft/api-extractor": "^7.34.4",
         "@nevware21/tripwire": "^0.1.1",
@@ -4509,7 +4509,7 @@
     },
     "@rush-temp/ts-preproc": {
       "version": "file:projects\\ts-preproc.tgz",
-      "integrity": "sha512-qpilYVUdTWUUhVd1vxSIRFuGpPcEYOPeHrURnpCZvAhC/E4GfxIB6ulBhiR0KEonOXLoDdWu7y0Gw2Fz5QB0iA==",
+      "integrity": "sha512-Bcm0j3kxLQK1nuL6cR06a0cC3aW2zwtFQq3QuNwlemDw7R5OvBjiM7tSBMbSDInbZYir9XCKxpK9G49ayxOgQw==",
       "requires": {
         "@microsoft/api-extractor": "^7.34.4",
         "@nevware21/tripwire": "^0.1.1",

@@ -1,3 +1,9 @@
+# v0.1.3 Nov 17th, 2024
+
+## Changelog
+
+- [#40](https://github.com/nevware21/ts-build-tools/issues/40) [Bug] publish-npm with no config file #40 [#41](https://github.com/nevware21/ts-build-tools/pull/41)
+
 # v0.1.2 Nov 17th, 2024
 
 ## Changelog

@@ -29,6 +29,7 @@ export function findPath(cb: (thePath: string) => string, thePath: string, cnt =
         thePath = "./";
     }
 
+    thePath = thePath.replace(/\\/g, "/").replace("/./", "/");
     let foundPath = cb(thePath);
     if (foundPath || foundPath === null) {
         return foundPath ? foundPath.replace(/\\/g, "/") : foundPath;
@@ -85,10 +86,10 @@ export function findPublishGroupsFile(thePath: string, name = PUBLISH_GROUPS_JSO
 
 export function findRepoRoot(thePath: string): string {
     let foundPath = findPath((thePath) => {
-        console.error("Checking [" + thePath + ".git]");
+        console.log("Checking [" + thePath + ".git]");
         if (fs.existsSync(thePath + ".git")) {
             // Looks like we are at the root of the repo, so stop
-            return thePath;
+            return thePath.replace(/\\/g, "/").replace("/./", "/");
         }
 
         return;

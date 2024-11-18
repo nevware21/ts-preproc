@@ -76,7 +76,7 @@ describe("findRepoRoot", () => {
         expect(findRepoRoot("../..")).equals("../..");
         expect(findRepoRoot("../../")).equals("../..");
         expect(findRepoRoot("./../../")).equals("./../..");
-        expect(findRepoRoot("../../.")).equals("../../.");
+        expect(findRepoRoot("../../.")).equals("../..");
         expect(findRepoRoot("../../..")).equals(null);
     });
 });
@@ -91,7 +91,7 @@ describe("findPublishGroupsFile", () => {
         expect(findPublishGroupsFile("../..")).equals("../../publish-groups.json");
         expect(findPublishGroupsFile("../../")).equals("../../publish-groups.json");
         expect(findPublishGroupsFile("./../../")).equals("./../../publish-groups.json");
-        expect(findPublishGroupsFile("../../.")).equals("../.././publish-groups.json");
+        expect(findPublishGroupsFile("../../.")).equals("../../publish-groups.json");
         expect(findPublishGroupsFile("../../..")).equals(null);
     });
 

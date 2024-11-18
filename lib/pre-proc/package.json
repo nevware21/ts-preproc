@@ -81,7 +81,7 @@
         "cross-env": "^7.0.3",
         "grunt": "^1.5.3",
         "grunt-cli": "^1.4.3",
-        "rollup": "^3.8.1",
+        "rollup": "^4.27.3",
         "rollup-plugin-minify-es": "^1.1.1",
         "rollup-plugin-cleanup": "^3.2.1",
         "ts-mocha": "^10.0.0",

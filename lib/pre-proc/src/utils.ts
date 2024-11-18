@@ -27,6 +27,7 @@ export function findPath(cb: (thePath: string) => string, thePath: string, cnt =
         thePath = "./";
     }
 
+    thePath = thePath.replace(/\\/g, "/").replace("/./", "/");
     let foundPath = cb(thePath);
     if (foundPath || foundPath === null) {
         return foundPath ? foundPath.replace(/\\/g, "/") : foundPath;
@@ -64,7 +65,8 @@ export function findRepoRoot(thePath: string): string {
     let foundPath = findPath((thePath) => {
         if (fs.existsSync(thePath + ".git")) {
             // Looks like we are at the root of the repo, so stop
-            return thePath;
+            // Looks like we are at the root of the repo, so stop
+            return thePath.replace(/\\/g, "/").replace("/./", "/");
         }
 
         return;

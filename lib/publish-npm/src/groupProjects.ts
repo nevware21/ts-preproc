@@ -18,12 +18,12 @@ export function getGroupProjects(theArgs: INpmPublishArgs): string[] {
         console.log("Using Publish Group: " + publishGroup);
     }
 
-    if (!fs.existsSync(theArgs.publishGroupDef)) {
-        console.error("!!! Unable to locate publish group definitions [" + path.join(process.cwd(), theArgs.publishGroupDef) + "]");
+    if (!fs.existsSync(publishGroup)) {
+        console.error("!!! Unable to locate publish group definitions [" + path.join(process.cwd(), publishGroup) + "]");
         throw new Error("!!! Unable to locate publish group definitions.");
     }
 
-    var groupText = removeComments(removeJsonTrailingComma(fs.readFileSync(theArgs.publishGroupDef, "utf-8")));
+    var groupText = removeComments(removeJsonTrailingComma(fs.readFileSync(publishGroup, "utf-8")));
 
     let groupJson = JSON.parse(groupText);
     let repoRoot = groupJson.repoRoot;
@@ -31,7 +31,7 @@ export function getGroupProjects(theArgs: INpmPublishArgs): string[] {
         repoRoot = findRepoRoot("./");
     }
 
-    theArgs.repoRoot = path.join(process.cwd(), (groupJson.repoRoot || "")).replace(/\\/g, "/");
+    theArgs.repoRoot = path.relative(process.cwd(), path.join(process.cwd(), (repoRoot || ""))).replace(/\\/g, "/");
     console.log("Repo: " + theArgs.repoRoot);
 
     if (!theArgs.publishGroup) {

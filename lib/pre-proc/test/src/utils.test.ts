@@ -76,7 +76,7 @@ describe("findRepoRoot", () => {
         expect(findRepoRoot("../..")).equals("../..");
         expect(findRepoRoot("../../")).equals("../..");
         expect(findRepoRoot("./../../")).equals("./../..");
-        expect(findRepoRoot("../../.")).equals("../../.");
+        expect(findRepoRoot("../../.")).equals("../..");
         expect(findRepoRoot("../../..")).equals(null);
     });
 });

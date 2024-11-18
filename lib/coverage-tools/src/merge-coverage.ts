@@ -14,20 +14,37 @@ const istanbulReport = require("istanbul-lib-report");
 const istanbulReportGenerator = require("istanbul-reports");
 
 import * as fs from "fs";
+import * as path from "path";
 import { globbySync } from "globby";
 import { IMergeCoverageArgs } from "./interfaces/IMergeCoverageArgs";
-import { getJson } from "./utils";
+import { findPath, getJson } from "./utils";
+
+export function findCoverage(thePath: string): string {
+    let foundPath = findPath((thePath) => {
+        if (fs.existsSync(thePath + "coverage")) {
+            return thePath + "coverage";
+        }
+
+        if (fs.existsSync(thePath + ".git")) {
+            // Looks like we are at the root of the repo, so stop
+            return null;
+        }
+
+        return;
+    }, thePath);
+
+    if (!foundPath) {
+        console.error("!!! Unable to locate coverage folder [" + path.join(process.cwd(), thePath) + "]");
+    }
+
+    return foundPath;
+}
 
 export function mergeCoverage(cfg: IMergeCoverageArgs) {
     let rootPath = cfg.coverageRoot;
     if (!rootPath) {
-        if (fs.existsSync("./coverage")) {
-            rootPath = "./coverage";
-        } else if (fs.existsSync("../coverage")) {
-            rootPath = "../coverage";
-        } else if (fs.existsSync("../../coverage")) {
-            rootPath = "../../coverage";
-        } else {
+        rootPath = findCoverage("./");
+        if (!rootPath) {
             console.error("No coverage directory found in parent or current directory");
             return;
         }

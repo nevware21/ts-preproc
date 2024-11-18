@@ -1,0 +1,22 @@
+// ------------------------------
+// Publish-Npm groups definitions
+// ------------------------------
+{
+    "default": "all",
+    "groups": {
+        "all": [
+            "./lib/pre-proc",
+            "./lib/coverage-tools",
+            "./lib/publish-npm"
+        ],
+        "preProc": [
+            "./lib/pre-proc"
+        ],
+        "mergeCoverage": [
+            "./lib/coverage-tools"
+        ],
+        "npmPublish": [
+            "./lib/publish-npm"
+        ]
+    }
+}

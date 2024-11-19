@@ -19,8 +19,7 @@ export function getGroupProjects(theArgs: INpmPublishArgs): string[] {
     }
 
     if (!fs.existsSync(publishGroup)) {
-        console.error("!!! Unable to locate publish group definitions [" + path.join(process.cwd(), publishGroup) + "]");
-        throw new Error("!!! Unable to locate publish group definitions.");
+        throw new Error("!!! Unable to locate publish group definitions [" + path.join(process.cwd(), publishGroup) + "]");
     }
 
     var groupText = removeComments(removeJsonTrailingComma(fs.readFileSync(publishGroup, "utf-8")));

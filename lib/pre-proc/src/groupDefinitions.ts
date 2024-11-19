@@ -10,8 +10,7 @@ export function getGroupDefinitions(preProcArgs: IPreProcArgs): string[] {
 
     if (preProcArgs.preProcDef) {
         if (!fs.existsSync(preProcArgs.preProcDef)) {
-            console.error("!!! Unable to locate group definitions [" + path.join(preProcArgs.cwd, preProcArgs.preProcDef) + "]");
-            throw new Error("!!! Unable to locate group definitions.");
+            throw new Error("!!! Unable to locate group definitions [" + path.join(preProcArgs.cwd, preProcArgs.preProcDef) + "]");
         } else {
             console.log("Using: " + path.join(preProcArgs.cwd, preProcArgs.preProcDef));
         }

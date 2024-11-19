@@ -12,16 +12,23 @@ import { parseArgs } from "../parseArgs";
 import { IMergeCoverageArgs } from "../interfaces/IMergeCoverageArgs";
 import { showHelp } from "../showHelp";
 
-(function() {
-    console.log("cwd: " + process.cwd());
-    let procArgs = process.argv;
-    let theArgs: IMergeCoverageArgs = null;
-    
-    theArgs = parseArgs(process.cwd(), arrSlice(procArgs, 2));
-    if (!theArgs) {
-        showHelp(procArgs[1]);
-        process.exit(1);
-    }
+export { IMergeCoverageArgs };
 
-    mergeCoverage(theArgs);
+(function() {
+    try {
+        console.log("cwd: " + process.cwd());
+        let procArgs = process.argv;
+        let theArgs: IMergeCoverageArgs = null;
+        
+        theArgs = parseArgs(process.cwd(), arrSlice(procArgs, 2));
+        if (!theArgs) {
+            showHelp(procArgs[1]);
+            process.exit(1);
+        }
+    
+        mergeCoverage(theArgs);
+    } catch (err) {
+        console.error(err.message || err);
+        process.exit(2);
+    }
 })();

@@ -15,38 +15,41 @@ import { showHelp } from "../showHelp";
 import { getNpmPackageName } from "../npmPackageName";
 
 (function() {
-    console.log("cwd: " + process.cwd());
-    let theArgs = parseArgs();
+    try {
+        console.log("cwd: " + process.cwd());
+        let theArgs = parseArgs();
+        
+        if (theArgs) {
+            var packages = getGroupProjects(theArgs);
     
-    if (theArgs) {
-        var packages = getGroupProjects(theArgs);
-
-        console.log(`Publishing [${theArgs.publishGroup}] packages => ${packages.length}`);
-        packages.forEach((packageRoot) => {
-            let packageJsonFile = path.join(theArgs.repoRoot, packageRoot + "/package.json");
-
-            if (!fs.existsSync(packageJsonFile)) {
-                console.error("!!! Source package.json doesn't exist [" + packageJsonFile + "] - [" + theArgs.repoRoot + ", " + packageRoot + "]");
-                throw new Error("!!! Source package.json doesn't exist [" + packageJsonFile + "] - [" + theArgs.repoRoot + ", " + packageRoot + "]");
-            }
-
-            let packageName = getNpmPackageName(packageJsonFile);
-            console.log("\n\n##################################################################");
-            console.log("Publishing - " + packageName);
-            console.log("##################################################################");
-            let npmPackageName = path.join(theArgs.repoRoot, packageRoot + "/" + packageName);
-            if (!fs.existsSync(npmPackageName)) {
-                console.error("!!! NPM Package not found [" + npmPackageName + "] - [" + theArgs.repoRoot + ", " + packageRoot + "]");
-                throw new Error("!!! NPM Package not found [" + npmPackageName + "] - [" + theArgs.repoRoot + ", " + packageRoot + "]");
-            }
-            
-            console.log(`npm package present ${npmPackageName}`);
-            let npmCmd = `npm publish ${npmPackageName} --access public ${theArgs.dryRun}`;
-            console.log(`Running: \"${npmCmd}\"`);
-            child_process.execSync(npmCmd);
-        });
-    } else {
-        showHelp();
-        process.exit(1);
+            console.log(`Publishing [${theArgs.publishGroup}] packages => ${packages.length}`);
+            packages.forEach((packageRoot) => {
+                let packageJsonFile = path.join(theArgs.repoRoot, packageRoot + "/package.json");
+    
+                if (!fs.existsSync(packageJsonFile)) {
+                    throw new Error("!!! Source package.json doesn't exist [" + packageJsonFile + "] - [" + theArgs.repoRoot + ", " + packageRoot + "]");
+                }
+    
+                let packageName = getNpmPackageName(packageJsonFile);
+                console.log("\n\n##################################################################");
+                console.log("Publishing - " + packageName);
+                console.log("##################################################################");
+                let npmPackageName = path.join(theArgs.repoRoot, packageRoot + "/" + packageName);
+                if (!fs.existsSync(npmPackageName)) {
+                    throw new Error("!!! NPM Package not found [" + npmPackageName + "] - [" + theArgs.repoRoot + ", " + packageRoot + "]");
+                }
+                
+                console.log(`npm package present ${npmPackageName}`);
+                let npmCmd = `npm publish ${npmPackageName} --access public ${theArgs.dryRun}`;
+                console.log(`Running: \"${npmCmd}\"`);
+                child_process.execSync(npmCmd);
+            });
+        } else {
+            showHelp();
+            process.exit(1);
+        }
+    } catch (err) {
+        console.error(err.message || err);
+        process.exit(2);
     }
 })();

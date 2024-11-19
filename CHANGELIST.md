@@ -1,3 +1,9 @@
+# v0.1.4 Nov 18th, 2024
+
+## Changelog
+
+- [#48](https://github.com/nevware21/ts-build-tools/issues/48) [Bug] Error message dumps entire script on error #48 [#49](https://github.com/nevware21/ts-build-tools/pull/49)
+
 # v0.1.3 Nov 17th, 2024
 
 ## Changelog

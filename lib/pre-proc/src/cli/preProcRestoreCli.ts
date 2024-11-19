@@ -7,31 +7,36 @@ import { getGroupDefinitions } from "../groupDefinitions";
 import { IPreProcArgs } from "../interfaces/IPreArgs";
 
 (function() {
-    console.log("cwd: " + process.cwd());
+    try {
+        console.log("cwd: " + process.cwd());
 
-    let theArgs: IPreProcArgs = null;
-    if (process.argv.length < 2) {
-        console.error("!!! Invalid number of arguments -- " + process.argv.length);
-    } else {
-        let argvArgs = arrSlice(process.argv, 2);
-        theArgs = parseArgs(process.cwd(), argvArgs);
-        if (theArgs) {
-            theArgs.restoreOnly = true;
+        let theArgs: IPreProcArgs = null;
+        if (process.argv.length < 2) {
+            console.error("!!! Invalid number of arguments -- " + process.argv.length);
+        } else {
+            let argvArgs = arrSlice(process.argv, 2);
+            theArgs = parseArgs(process.cwd(), argvArgs);
+            if (theArgs) {
+                theArgs.restoreOnly = true;
+            }
         }
-    }
-
-    if (theArgs) {
-        let groupDef = getGroupDefinitions(theArgs);
-
-        console.log(`Process [${theArgs.sourceGroup}] packages => ${groupDef.length}`);
-        console.log(` - Defined: ${JSON.stringify(theArgs.globalContext.defs, null, 4)}`);
-        groupDef.forEach((groupRoot) => {
-            let theRoot = path.join(theArgs.repoRoot, groupRoot).replace(/\\/g, "/")
-            console.log(` - ${theRoot}`);
-            processGroup(theArgs, theRoot);
-        });
-    } else {
-        showHelp(process.argv[1]);
-        process.exit(1);
+    
+        if (theArgs) {
+            let groupDef = getGroupDefinitions(theArgs);
+    
+            console.log(`Process [${theArgs.sourceGroup}] packages => ${groupDef.length}`);
+            console.log(` - Defined: ${JSON.stringify(theArgs.globalContext.defs, null, 4)}`);
+            groupDef.forEach((groupRoot) => {
+                let theRoot = path.join(theArgs.repoRoot, groupRoot).replace(/\\/g, "/")
+                console.log(` - ${theRoot}`);
+                processGroup(theArgs, theRoot);
+            });
+        } else {
+            showHelp(process.argv[1]);
+            process.exit(1);
+        }
+    } catch (err) {
+        console.error(err.message || err);
+        process.exit(2);
     }
 })();

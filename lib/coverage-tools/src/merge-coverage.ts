@@ -19,6 +19,8 @@ import { globbySync } from "globby";
 import { IMergeCoverageArgs } from "./interfaces/IMergeCoverageArgs";
 import { findPath, getJson } from "./utils";
 
+export { IMergeCoverageArgs };
+
 export function findCoverage(thePath: string): string {
     let foundPath = findPath((thePath) => {
         if (fs.existsSync(thePath + "coverage")) {
